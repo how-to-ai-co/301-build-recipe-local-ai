@@ -220,10 +220,17 @@ export default function Home() {
               <span>Terminal</span>
               <span className="inline-flex items-center gap-1.5"><WifiOff className="size-3.5" aria-hidden="true" /> works offline</span>
             </div>
-            <pre className="overflow-auto p-4 font-mono text-[15px] leading-relaxed sm:p-6">ollama launch opencode --model qwen3.5</pre>
+            <div className="divide-y">
+              {models.map((m) => (
+                <div key={m.tag} className="p-4 sm:px-6">
+                  <p className="font-mono text-[11px] tracking-widest text-muted-foreground uppercase">{m.memory}</p>
+                  <pre className="mt-1.5 overflow-auto font-mono text-[15px] leading-relaxed">ollama launch opencode --model {m.tag}</pre>
+                </div>
+              ))}
+            </div>
           </div>
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-            Use the model your agent downloaded: <code className="font-mono text-foreground">qwen3.8</code>, <code className="font-mono text-foreground">qwen3.5</code> or <code className="font-mono text-foreground">qwen3.5:4b</code>.
+            Type only the line for your computer’s memory: it’s the model your agent already downloaded. If it asks to download a model, you typed the wrong line: choose No.
             Type into the box at the bottom and press Enter, like Claude Code. <code className="font-mono text-foreground">/models</code> switches the model. Ctrl+C quits.
           </p>
         </section>
