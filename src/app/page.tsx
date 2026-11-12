@@ -80,6 +80,40 @@ const models = [
   { memory: "Under 16 GB", model: "Qwen 3.5 small", tag: "qwen3.5:4b", size: "4 GB" },
 ];
 
+const whyLocal = [
+  { title: "Where cloud AI isn’t allowed", body: "Law, healthcare, finance, government, or any company with a no-external-AI policy. The data can’t leave, so the AI comes to the data." },
+  { title: "Moving data between apps", body: "The copy-and-paste work between programs that don’t connect. Companies pay for automation tools to do this. A local model reads messy input too." },
+  { title: "Old software with no API", body: "Accounting programs, lab systems, internal tools that only have screens and buttons. The agent uses them like a person." },
+  { title: "Unlimited runs, no bill", body: "No per-task cost, so it can work through 500 files overnight." },
+  { title: "No internet", body: "On a plane, in the field, or on a secure network." },
+];
+
+const localIdeas = [
+  "Read invoices or receipts (PDFs in Preview) and type their totals into a spreadsheet.",
+  "Turn rough meeting notes into a formatted document in Pages or Word.",
+  "Draft replies to messages in Mail, saved as drafts for you to review.",
+  "Fill out a form in a desktop app from a text file of details.",
+  "Rename and sort files in Finder by what’s inside them.",
+  "Write a text message in Messages for you to review and send.",
+  "Make a to-do list in Reminders from an email you paste in.",
+  "Write a weekly report in a document from several local files.",
+  "Fill in a Numbers or Excel template from data in another app.",
+  "Clean up a messy spreadsheet: names, dates and duplicates.",
+];
+
+const browserIdeas = [
+  "Fill out a web form from a document on your computer.",
+  "Read a public page and pull out the key facts.",
+  "Compare a public job post against your private résumé.",
+  "Check a list of websites and report which are down or changed.",
+  "Gather prices or details from several public pages into one table.",
+  "Test your own website by clicking through it and reporting what’s broken.",
+  "Read your company’s internal web tools without that data reaching a cloud AI.",
+  "Fill in a web timesheet or expense system from your local notes.",
+  "Check public records or listings for updates.",
+  "Walk through a multi-page signup on a test site and report each step.",
+];
+
 type Resource = { name: string; logo: string; what: string; href: string; linkLabel: string };
 
 const resources: Resource[] = [
@@ -144,6 +178,7 @@ export default function Home() {
           <nav aria-label="On this page" className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold">
             <a href="#install" className={`inline-flex items-center gap-1.5 ${linkClass}`}>1. Your tools <ArrowDown className="size-4" aria-hidden="true" /></a>
             <a href="#run" className={`inline-flex items-center gap-1.5 ${linkClass}`}>2. Go offline <ArrowDown className="size-4" aria-hidden="true" /></a>
+            <a href="#ideas" className={`inline-flex items-center gap-1.5 ${linkClass}`}>3. What to do with it <ArrowDown className="size-4" aria-hidden="true" /></a>
           </nav>
         </header>
 
@@ -232,6 +267,39 @@ export default function Home() {
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground">
             Lost the command? Use the line above for your computer’s memory: it matches the model your agent downloaded. If it asks to download a model, it’s the wrong line: choose No.
             Type into the box at the bottom and press Enter, like Claude Code. <code className="font-mono text-foreground">/models</code> switches the model. Ctrl+C quits.
+          </p>
+        </section>
+
+        <section id="ideas" className="mt-14 scroll-mt-6 border-t pt-9">
+          <SectionHead n="3" title="What to do with it" body="A local agent can do almost anything you can do with a keyboard and mouse. The real question is when you wouldn’t want to send it to a cloud AI." />
+
+          <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {whyLocal.map((w) => (
+              <li key={w.title} className="rounded-2xl border bg-card p-5">
+                <h3 className="font-bold tracking-tight">{w.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{w.body}</p>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-8 grid gap-4 lg:grid-cols-2">
+            {[
+              { label: "On your computer · works offline", tool: "agent-desktop", items: localIdeas },
+              { label: "In the browser · needs internet", tool: "agent-browser", items: browserIdeas },
+            ].map((col) => (
+              <div key={col.tool} className="overflow-hidden rounded-2xl border bg-secondary/30">
+                <div className="border-b p-5">
+                  <p className="font-mono text-[11px] tracking-widest text-muted-foreground uppercase">{col.label}</p>
+                  <p className="mt-1.5 text-lg font-bold tracking-tight"><code className="font-mono">{col.tool}</code></p>
+                </div>
+                <ol className="list-decimal space-y-2 p-5 pl-10 text-sm leading-relaxed marker:font-mono marker:text-muted-foreground">
+                  {col.items.map((item) => <li key={item}>{item}</li>)}
+                </ol>
+              </div>
+            ))}
+          </div>
+          <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Start each request with the tool’s name, like “Use agent-desktop to…”. A small model picks the right tool more often. Big tasks are slow on a local model, so start small.
           </p>
         </section>
       </div>
