@@ -70,4 +70,4 @@ You may have these from AI 201. If they're installed and signed in, just check a
 ## Finish
 Show one table: each tool, its version, my Qwen model with its size and tokens per second, and the signed-in GitHub and Vercel accounts. Mark each line verified or needs action.
 
-If everything is verified, end with: **"Your computer is ready to run AI locally."** Then tell me how to start in class: open Terminal (or PowerShell on Windows) and type `ollama launch opencode --model <my model>`, with my model filled in. Otherwise give me the one next action that fixes the first problem.
+If everything is verified, end with: **"Your computer is ready to run AI locally."** Then tell me how to start in class (Part 2 of the class page): open Terminal (or PowerShell on Windows) and type `ollama launch opencode --model <my model>`, with my exact model filled in, in its own code block so I can copy it. Tell me to save it: it's the only command I need in class. Otherwise give me the one next action that fixes the first problem.

@@ -214,7 +214,7 @@ export default function Home() {
         </section>
 
         <section id="run" className="mt-14 scroll-mt-6 border-t pt-9">
-          <SectionHead n="2" title="Go offline" body="In class. Open Terminal (PowerShell on Windows), start OpenCode on your Qwen model, then turn the Wi-Fi off." />
+          <SectionHead n="2" title="Go offline" body="In class. Open Terminal (PowerShell on Windows) and type the start command your agent gave you at the end of Part 1. It already has your model in it. Then turn the Wi-Fi off." />
           <div className="mt-8 overflow-hidden rounded-2xl border bg-card shadow-sm">
             <div className="flex items-center justify-between border-b bg-secondary/35 px-4 py-2 font-mono text-xs text-muted-foreground">
               <span>Terminal</span>
@@ -230,7 +230,7 @@ export default function Home() {
             </div>
           </div>
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-            Type only the line for your computer’s memory: it’s the model your agent already downloaded. If it asks to download a model, you typed the wrong line: choose No.
+            Lost the command? Use the line above for your computer’s memory: it matches the model your agent downloaded. If it asks to download a model, it’s the wrong line: choose No.
             Type into the box at the bottom and press Enter, like Claude Code. <code className="font-mono text-foreground">/models</code> switches the model. Ctrl+C quits.
           </p>
         </section>
