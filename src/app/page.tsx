@@ -159,6 +159,7 @@ function Logo({ file, size }: { file: string; size: number }) {
 
 export default function Home() {
   const setupPrompt = readFileSync(path.join(process.cwd(), "content", "setup-prompt.md"), "utf8");
+  const opencodePrompt = "Run the research demo. When it's done, tell me which model you'd pick for my computer and why.";
 
   return (
     <main className="flex-1">
@@ -177,7 +178,7 @@ export default function Home() {
           </p>
           <nav aria-label="On this page" className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold">
             <a href="#install" className={`inline-flex items-center gap-1.5 ${linkClass}`}>1. Your tools <ArrowDown className="size-4" aria-hidden="true" /></a>
-            <a href="#run" className={`inline-flex items-center gap-1.5 ${linkClass}`}>2. Go offline <ArrowDown className="size-4" aria-hidden="true" /></a>
+            <a href="#run" className={`inline-flex items-center gap-1.5 ${linkClass}`}>2. Run the demo <ArrowDown className="size-4" aria-hidden="true" /></a>
             <a href="#ideas" className={`inline-flex items-center gap-1.5 ${linkClass}`}>3. What to do with it <ArrowDown className="size-4" aria-hidden="true" /></a>
           </nav>
         </header>
@@ -249,24 +250,42 @@ export default function Home() {
         </section>
 
         <section id="run" className="mt-14 scroll-mt-6 border-t pt-9">
-          <SectionHead n="2" title="Go offline" body="In class. Open Terminal (PowerShell on Windows) and type the start command your agent gave you at the end of Part 1. It already has your model in it. Then turn the Wi-Fi off." />
-          <div className="mt-8 overflow-hidden rounded-2xl border bg-card shadow-sm">
+          <SectionHead n="2" title="Run the demo" body="In class. One command in Terminal starts OpenCode on your local Qwen, then one prompt runs the demo: a browser researches AI models, Qwen judges them, and Numbers fills in a table." />
+
+          <p className="mt-8 font-mono text-[11px] tracking-widest text-primary uppercase">Step 1 · Terminal</p>
+          <div className="mt-2 overflow-hidden rounded-2xl border bg-card shadow-sm">
             <div className="flex items-center justify-between border-b bg-secondary/35 px-4 py-2 font-mono text-xs text-muted-foreground">
               <span>Terminal</span>
-              <span className="inline-flex items-center gap-1.5"><WifiOff className="size-3.5" aria-hidden="true" /> works offline</span>
+              <span>starts OpenCode in the demo folder</span>
             </div>
             <div className="divide-y">
               {models.map((m) => (
                 <div key={m.tag} className="p-4 sm:px-6">
                   <p className="font-mono text-[11px] tracking-widest text-muted-foreground uppercase">{m.memory}</p>
-                  <pre className="mt-1.5 overflow-auto font-mono text-[15px] leading-relaxed">ollama launch opencode --model {m.tag}</pre>
+                  <pre className="mt-1.5 overflow-auto font-mono text-[15px] leading-relaxed">~/local-ai-research-demo/start.sh {m.tag}</pre>
                 </div>
               ))}
             </div>
           </div>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Type the command your agent gave you at the end of Part 1. Lost it? Use the line for your computer’s memory. If it asks to download a model, it’s the wrong line: choose No.
+            On Windows, the demo isn’t available yet: type <code className="font-mono text-foreground">ollama launch opencode --model</code> and your model in PowerShell, and chat with it instead.
+          </p>
+
+          <div className="mt-8">
+            <PromptBlock id="opencode-prompt" step="Step 2 · OpenCode" title="Demo prompt" when="Paste it into the box at the bottom of OpenCode and press Enter. Give it a minute or two to start, then don’t type while Numbers fills in." text={opencodePrompt} copyLabel="Copy demo prompt" />
+          </div>
+
+          <ol className="mt-6 max-w-2xl list-decimal space-y-1.5 pl-5 text-sm leading-relaxed text-muted-foreground">
+            <li>Chrome opens <a href="https://weightclass.xyz" className={linkClass}>weightclass.xyz</a> and filters to open models that fit 48 GB.</li>
+            <li>Your local Qwen writes a short verdict on the top five.</li>
+            <li>Numbers opens and the table fills in, one row at a time. It’s saved in Documents › Local AI research.</li>
+            <li>OpenCode tells you which model it would pick for your computer, and why.</li>
+          </ol>
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-            Lost the command? Use the line above for your computer’s memory: it matches the model your agent downloaded. If it asks to download a model, it’s the wrong line: choose No.
-            Type into the box at the bottom and press Enter, like Claude Code. <code className="font-mono text-foreground">/models</code> switches the model. Ctrl+C quits.
+            <span className="inline-flex items-center gap-1.5 font-semibold text-foreground"><WifiOff className="size-3.5" aria-hidden="true" /> Then go offline.</span>{" "}
+            The browser step needs the internet, but the AI doesn’t. Turn the Wi-Fi off and keep chatting in OpenCode: Qwen still answers.
+            The code is on <a href="https://github.com/how-to-ai-co/local-ai-research-demo" className={linkClass}>GitHub</a>. Ctrl+C quits OpenCode.
           </p>
         </section>
 

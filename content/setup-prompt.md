@@ -67,7 +67,20 @@ You may have these from AI 201. If they're installed and signed in, just check a
 1. **GitHub CLI**: if missing, on a Mac download the macOS .pkg installer from the latest release at github.com/cli/cli/releases and open it for me to click through. On Windows, `winget install --id GitHub.cli -e --source winget --accept-source-agreements --accept-package-agreements`. If `gh auth status` says I'm not signed in, run `gh auth login --hostname github.com --git-protocol https --web` in the background, show me the one-time code and the link, and wait. Ask me to confirm the username.
 2. **Vercel CLI**: if missing, `npm install -g vercel`. If `vercel whoami` says I'm not signed in, run `vercel login` in the background, show me the link, and wait.
 
-## Finish
-Show one table: each tool, its version, my Qwen model with its size and tokens per second, and the signed-in GitHub and Vercel accounts. Mark each line verified or needs action.
+## Step 7: The class demo (Mac only)
+The class demo is a small program: a browser researches AI models on weightclass.xyz, my local Qwen writes a verdict on each, and Numbers fills in a table.
 
-If everything is verified, end with: **"Your computer is ready to run AI locally."** Then tell me how to start in class (Part 2 of the class page): open Terminal (or PowerShell on Windows) and type `ollama launch opencode --model <my model>`, with my exact model filled in, in its own code block so I can copy it. Tell me to save it: it's the only command I need in class. Otherwise give me the one next action that fixes the first problem.
+1. If `~/local-ai-research-demo` is missing, run `git clone https://github.com/how-to-ai-co/local-ai-research-demo ~/local-ai-research-demo`. If it's already there, run `git -C ~/local-ai-research-demo pull`.
+2. Check that Numbers is installed. If it's missing, open it in the App Store for me to click Get (it's free).
+3. Don't run the demo. I'll run it in class.
+
+On Windows, skip this step.
+
+## Finish
+Show one table: each tool, its version, my Qwen model with its size and tokens per second, the class demo folder, and the signed-in GitHub and Vercel accounts. Mark each line verified or needs action.
+
+If everything is verified, end with: **"Your computer is ready to run AI locally."** Then give me my class command (Part 2 of the class page), with my exact model filled in, in its own code block so I can copy it, and tell me to save it:
+- On a Mac: `~/local-ai-research-demo/start.sh <my model>`
+- On Windows: `ollama launch opencode --model <my model>`, typed in PowerShell
+
+Otherwise give me the one next action that fixes the first problem.
