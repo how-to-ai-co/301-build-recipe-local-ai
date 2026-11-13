@@ -76,7 +76,7 @@ export function PromptBlock({
 
       <p aria-live="polite" className="mt-3 min-h-5 text-sm">
         {state === "copied" && (
-          <span className="text-primary">Copied. Paste it into Claude Code.</span>
+          <span className="text-primary">Copied. {when}</span>
         )}
         {state === "error" && (
           <span className="text-destructive">

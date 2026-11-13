@@ -8,7 +8,7 @@ const icon = (size, radius) => `<!doctype html><html><head>${fonts}<style>${base
 body{display:flex;align-items:center;justify-content:center;background:${radius ? "transparent" : "#e0582a"}}
 .tile{width:${size}px;height:${size}px;border-radius:${radius}px;background:#e0582a;display:flex;align-items:center;justify-content:center}
 .t{font-family:Fraunces;font-weight:900;color:#fff;font-size:${Math.round(size * 0.42)}px;letter-spacing:-0.04em;line-height:1}
-</style></head><body><div class="tile"><span class="t">301</span></div></body></html>`;
+</style></head><body><div class="tile"><span class="t">AI</span></div></body></html>`;
 
 const logo = (name) => `data:image/svg+xml;base64,${readFileSync(`public/logos/${name}.svg`).toString("base64")}`;
 const og = `<!doctype html><html><head>${fonts}<style>${base}
@@ -22,8 +22,8 @@ p{font-size:27px;line-height:1.45;color:#655d53;margin-top:15px;max-width:960px}
 .group{display:flex;align-items:center;gap:24px}.tool{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:500;white-space:nowrap}
 img{width:34px;height:34px;object-fit:contain}.or{font-size:15px;color:#8d8376}.arrow{font-size:32px;color:#b9b0a5;padding:0 6px}.services{flex:1;justify-content:space-between}.label{font-family:'Geist Mono';font-size:12px;color:#8d8376;letter-spacing:.06em;margin-bottom:17px}
 </style></head><body>
-<div class="top"><div class="brand">How to AI<span>.</span></div><div class="k">AI 301 / LOCAL AI</div></div>
-<h1>AI that never leaves<br>your computer.</h1>
+<div class="top"><div class="brand">How to AI<span>.</span></div><div class="k">LOCAL AI</div></div>
+<h1>AI on your<br>local computer.</h1>
 <p>One prompt sets up an open model and an agent that uses it.</p>
 <div class="stack"><div style="flex:1"><div class="label">RUNS ON YOUR COMPUTER</div><div class="group services"><div class="tool"><img src="${logo('ollama')}">Ollama</div><span class="arrow">→</span><div class="tool"><img src="${logo('qwen')}">Qwen</div><span class="arrow">→</span><div class="tool"><img src="${logo('opencode')}">OpenCode</div><span class="arrow">+</span><div class="tool"><img src="${logo('vercel')}">Agent Desktop</div></div></div></div>
 </body></html>`;

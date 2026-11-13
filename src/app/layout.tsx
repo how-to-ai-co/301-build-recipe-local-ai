@@ -24,10 +24,10 @@ const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "AI 301: Local AI",
+  title: "AI on your local computer",
   description:
     "One prompt sets up Ollama, Qwen, OpenCode, Agent Desktop and Agent Browser, so AI runs on your own computer.",
-  appleWebApp: { title: "AI 301", capable: true, statusBarStyle: "default" },
+  appleWebApp: { title: "Local AI", capable: true, statusBarStyle: "default" },
 };
 
 export const viewport: Viewport = {

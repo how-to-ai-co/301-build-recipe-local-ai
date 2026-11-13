@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "AI 301 Local AI",
-    short_name: "AI 301",
+    name: "AI on your local computer",
+    short_name: "Local AI",
     description: "Run AI on your own computer with Ollama, Qwen and OpenCode.",
     start_url: "/",
     display: "standalone",
