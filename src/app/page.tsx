@@ -258,7 +258,7 @@ export default function Home() {
                 <p className="mt-4 text-lg font-bold tracking-tight">{m.model}</p>
                 <p className="mt-0.5 text-sm text-muted-foreground"><code className="font-mono text-foreground">{m.tag}</code> · {m.size} download</p>
                 <div className="mt-5 flex-1" />
-                <CopyLine text={modelPrompt(m)} label={`${m.model} download prompt`} wrap />
+                <CopyLine text={modelPrompt(m)} label={`${m.model} download prompt`} caption="Download prompt" />
               </li>
             ))}
           </ul>
